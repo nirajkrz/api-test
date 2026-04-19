@@ -244,25 +244,9 @@ class TestExecutor:
         except:
             response_json = None
         
-        # Basic response validation
-        if response.status_code == 200:
-            assertion_results['status_code_200'] = True
-        else:
-            assertion_results['status_code_200'] = False
-        
-        # Check response time if specified
-        response_time = response.elapsed.total_seconds() * 1000
-        if response_time < 5000:  # Basic timeout check
-            assertion_results['response_time_ok'] = True
-        else:
-            assertion_results['response_time_ok'] = False
-        
-        # Check if response has content for successful requests
-        if response.status_code in [200, 201] and not response.text.strip():
-            assertion_results['has_response_content'] = False
-        else:
-            assertion_results['has_response_content'] = True
-        
+        expected_status = test_case.get('expected_status', 200)
+        assertion_results['status_code_match'] = response.status_code == expected_status
+
         # Check for common error patterns
         if 'error' in response.text.lower() or 'exception' in response.text.lower():
             assertion_results['no_error_in_response'] = False

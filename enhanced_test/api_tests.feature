@@ -4,8 +4,8 @@ Feature: API Testing Scenarios
     Given the API endpoint '/get' is available
     And the following query parameters are provided:
       | Parameter | Value |
-      | param1 | tPslgxHOQq |
-      | param2 | 31 |
+      | param1 | RDBMhGsOjh |
+      | param2 | 19 |
     When a GET request is sent to the endpoint
     Then the response status code should be 200
 

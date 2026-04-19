@@ -139,6 +139,10 @@ python src/main.py --contract api.yaml --env staging --auth auth.json
 python src/main.py --contract api.yaml --filter positive,security --parallel 4
 ```
 
+> Note: `--base-url` is used by the current implementation to construct each request URL. If you do not pass `--base-url`, the tool will fall back to the selected environment configuration from `environments.json` or the default `http://localhost:8000`.
+>
+> The current parser does not automatically extract the OpenAPI `servers` list from Swagger/OpenAPI definitions, so `--base-url` or an environment-specific base URL is still needed unless your contract paths already contain full URLs.
+
 ### Sample Output
 ```
 2026-04-19 21:05:24,748 - INFO - Starting API testing with contract: api.yaml
@@ -162,7 +166,84 @@ SUMMARY: 12/15 tests passed
 ============================================================
 ```
 
-## 📖 Usage
+## � Distribution & Pipeline Integration
+
+Make the tool easy to share and run in CI/CD or Lightspeed-style pipelines with one of these approaches:
+
+### 1. Install and run directly
+- Clone or checkout the repository
+- Create a virtual environment
+- Install dependencies with `pip install -r requirements.txt`
+
+Example:
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python src/main.py --contract examples/swagger.yaml --env staging --auth auth.json --output-dir output
+```
+
+### 2. Use a Docker container
+Build a reusable container image and run test commands inside it.
+```bash
+docker build -t api-test .
+docker run --rm \
+  -v "$PWD/examples":/app/examples \
+  -v "$PWD/auth_config.json":/app/auth_config.json \
+  -v "$PWD/environments.json":/app/environments.json \
+  api-test \
+  --contract examples/swagger.yaml \
+  --env staging \
+  --auth auth_config.json \
+  --output-dir /app/output
+```
+
+### 3. Use secure secrets, not checked-in credentials
+- Store bearer tokens, client secrets, and API keys in your pipeline secret store
+- Mount auth config or inject values as environment variables
+- Keep `auth.json` out of source control
+
+### Lightspeed / CI pipeline pattern
+Use the same CLI in pipeline steps. Keep auth and environment config separate from test metadata.
+
+Example pipeline step:
+```yaml
+steps:
+  - name: Checkout repository
+    uses: actions/checkout@v4
+
+  - name: Set up Python
+    uses: actions/setup-python@v5
+    with:
+      python-version: '3.12'
+
+  - name: Install dependencies
+    run: pip install -r requirements.txt
+
+  - name: Run API tests
+    run: |
+      python src/main.py \
+        --contract examples/swagger.yaml \
+        --env staging \
+        --auth auth.json \
+        --metadata examples/ecommerce_metadata.yaml \
+        --output-dir output
+
+  - name: Upload results
+    uses: actions/upload-artifact@v4
+    with:
+      name: api-test-results
+      path: output/
+```
+
+### Best practices for pipeline use
+- Keep environment-specific values in `environments.json`
+- Keep credentials in pipeline secret storage
+- Use `--auth` to load secure credentials at runtime
+- Mount secrets into containers or use secure file injection
+- Publish `output/results.json` and reports as pipeline artifacts
+
+## �📖 Usage
 
 ### Command Line Options
 
@@ -173,11 +254,18 @@ Required Arguments:
   --contract CONTRACT      Path to API contract/specification file
 
 Optional Arguments:
-  --metadata METADATA     Path to metadata/configuration file (YAML)
-  --base-url BASE_URL      Base URL of the API
+  --metadata METADATA [METADATA ...]  Path(s) to metadata/configuration file(s) (YAML)
+  --base-url BASE_URL      Base URL of the API (overrides environment config)
   --env ENV               Environment configuration (default: default)
   --output-dir DIR         Output directory for results (default: output)
   --contract-type TYPE     Force contract type (openapi, abi, graphql, postman, auto)
+
+Notes:
+  - You can supply multiple metadata files with `--metadata file1.yaml file2.yaml`.
+  - Metadata files are merged in order, so later files can override values from earlier files.
+  - If `--base-url` is omitted, the tool will use the selected environment's `base_url` from `environments.json`.
+  - If no environment setting is available, the tool defaults to `http://localhost:8000`.
+  - OpenAPI `servers` lists are not currently auto-parsed, so providing a base URL is the safest option.
 
 Authentication:
   --auth AUTH_FILE        Authentication configuration file
@@ -315,6 +403,9 @@ custom_assertions:
       - type: "response_time"
         max_ms: 1000
 
+# Note: response-time and other custom assertions are only applied when configured explicitly.
+# The tool does not enforce default timing limits unless you define them in metadata.
+
 data_driven_scenarios:
   - name: "User search by status"
     endpoint: "/users"
@@ -381,7 +472,7 @@ Example command:
 ```bash
 python src/main.py \
   --contract examples/swagger.yaml \
-  --metadata examples/minimal_metadata.yaml \
+  --metadata examples/minimal_metadata.yaml examples/extra_metadata.yaml \
   --env staging \
   --auth auth.json
 ```
@@ -393,7 +484,136 @@ python src/main.py \
 - Re-run tests after each update to refine assertions
 - Expand minimal metadata into a fuller contract as the API becomes better defined
 
-## 📄 Supported Formats
+## � Supplying richer metadata and business rules
+
+### Provide richer metadata and real request/response examples
+Use `metadata.yaml` to describe real API behavior, not just schema.
+
+Example:
+```yaml
+request_examples:
+  - endpoint: /orders
+    method: POST
+    description: "Create order with customer details"
+    headers:
+      Content-Type: application/json
+    body:
+      customer_id: 123
+      items:
+        - sku: "ABC123"
+          quantity: 2
+      payment_method: "card"
+    expected_response:
+      status_code: 201
+      body:
+        order_id: 1001
+        status: "confirmed"
+        total_amount: 234.56
+
+response_examples:
+  - endpoint: /orders/{order_id}
+    method: GET
+    expected_response:
+      status_code: 200
+      body:
+        order_id: 1001
+        status: "confirmed"
+        customer_id: 123
+        items:
+          - sku: "ABC123"
+            quantity: 2
+```
+
+This lets the tool generate more meaningful tests and helps you refine validation rules over time.
+
+### Add custom assertions and business rules
+Define endpoint-level assertions in metadata to capture business behavior:
+
+```yaml
+custom_assertions:
+  - endpoint: /orders
+    method: POST
+    assertions:
+      - type: status_code
+        expected: 201
+      - type: response_body_contains
+        path: status
+        expected: confirmed
+      - type: response_body_value
+        path: total_amount
+        comparator: ">="
+        expected: 0
+      - type: response_body_value
+        path: customer_id
+        comparator: ">"
+        expected: 0
+```
+
+For business-rule tests, define scenarios such as:
+- an order must not be created with a negative amount
+- VIP customers receive `priority` status
+- a refund request must include a valid transaction ID
+
+If the current implementation does not yet evaluate every assertion type, use these definitions as a design pattern to extend `TestGenerator` and `TestExecutor`.
+
+### Extend `TestGenerator` with domain-aware scenarios
+Add domain-level metadata sections that describe business rules and scenario variants:
+
+```yaml
+business_rules:
+  - name: "VIP order discount"
+    endpoint: /orders
+    method: POST
+    payload:
+      customer_type: "VIP"
+      items:
+        - sku: "ABC123"
+          quantity: 1
+    expected:
+      status_code: 201
+      body:
+        discount_applied: true
+
+  - name: "Reject invalid payment type"
+    endpoint: /orders
+    method: POST
+    payload:
+      payment_method: "cash"
+    expected:
+      status_code: 400
+```
+
+Then extend `src/test_generator.py`:
+- Add a new metadata handler such as `_generate_business_rules_tests`
+- Convert `business_rules` into test cases with explicit payload, headers, and expected response
+- Add domain-aware naming and tags for each generated scenario
+
+Example change in `TestGenerator.generate_test_cases()`:
+```python
+if self.metadata.get('business_rules'):
+    test_cases.extend(self._generate_business_rules_tests())
+```
+
+Example handler:
+```python
+def _generate_business_rules_tests(self):
+    tests = []
+    for rule in self.metadata.get('business_rules', []):
+        tests.append({
+            'name': rule['name'],
+            'type': 'business_rule',
+            'endpoint': rule['endpoint'],
+            'method': rule['method'],
+            'requestBody': {'content': {'application/json': {'example': rule['payload']}}},
+            'expected': rule['expected'],
+            'tags': ['business_rule']
+        })
+    return tests
+```
+
+This pattern creates stronger test coverage for domain-specific requirements and makes the suite more useful in production.
+
+## �📄 Supported Formats
 
 ### OpenAPI/Swagger
 ```yaml

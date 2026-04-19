@@ -49,3 +49,57 @@
 2026-04-19 21:05:25,186 - DEBUG - Response: 200, Time: 60.96ms
 2026-04-19 21:05:25,186 - INFO - Publishing results to: enhanced_test
 2026-04-19 21:05:25,187 - INFO - Test execution completed
+2026-04-19 21:49:15,729 - INFO - Starting API testing with contract: examples/httpbin_test.yaml
+2026-04-19 21:49:15,729 - INFO - Environment: default, Base URL: https://httpbin.org
+2026-04-19 21:49:15,735 - INFO - Generating test cases...
+2026-04-19 21:49:15,735 - INFO - Generated 3 test cases after filtering
+2026-04-19 21:49:15,735 - INFO - Generating Gherkin feature files...
+2026-04-19 21:49:15,736 - INFO - Executing 3 tests against: https://httpbin.org
+2026-04-19 21:49:15,737 - DEBUG - Starting new HTTPS connection (1): httpbin.org:443
+2026-04-19 21:49:16,012 - DEBUG - https://httpbin.org:443 "GET /get?param1=ZrwyNjaTRE&param2=94 HTTP/1.1" 200 388
+2026-04-19 21:49:16,013 - DEBUG - Request: GET https://httpbin.org/get
+2026-04-19 21:49:16,013 - DEBUG - Response: 200, Time: 276.94ms
+2026-04-19 21:49:16,074 - DEBUG - https://httpbin.org:443 "POST /post HTTP/1.1" 200 401
+2026-04-19 21:49:16,075 - DEBUG - Request: POST https://httpbin.org/post
+2026-04-19 21:49:16,075 - DEBUG - Response: 200, Time: 61.62ms
+2026-04-19 21:49:16,230 - DEBUG - https://httpbin.org:443 "GET /status/200 HTTP/1.1" 200 0
+2026-04-19 21:49:16,231 - DEBUG - Request: GET https://httpbin.org/status/200
+2026-04-19 21:49:16,231 - DEBUG - Response: 200, Time: 155.10ms
+2026-04-19 21:49:16,231 - INFO - Publishing results to: enhanced_test
+2026-04-19 21:49:16,232 - INFO - Test execution completed
+2026-04-19 21:50:01,837 - INFO - Starting API testing with contract: examples/httpbin_test.yaml
+2026-04-19 21:50:01,837 - INFO - Environment: default, Base URL: https://httpbin.org
+2026-04-19 21:50:01,851 - INFO - Generating test cases...
+2026-04-19 21:50:01,852 - INFO - Generated 3 test cases after filtering
+2026-04-19 21:50:01,852 - INFO - Generating Gherkin feature files...
+2026-04-19 21:50:01,853 - INFO - Executing 3 tests against: https://httpbin.org
+2026-04-19 21:50:01,855 - DEBUG - Starting new HTTPS connection (1): httpbin.org:443
+2026-04-19 21:50:02,621 - DEBUG - https://httpbin.org:443 "GET /get?param1=pzTLaHNEIp&param2=88 HTTP/1.1" 200 388
+2026-04-19 21:50:02,622 - DEBUG - Request: GET https://httpbin.org/get
+2026-04-19 21:50:02,622 - DEBUG - Response: 200, Time: 768.03ms
+2026-04-19 21:50:02,682 - DEBUG - https://httpbin.org:443 "POST /post HTTP/1.1" 200 401
+2026-04-19 21:50:02,683 - DEBUG - Request: POST https://httpbin.org/post
+2026-04-19 21:50:02,683 - DEBUG - Response: 200, Time: 60.66ms
+2026-04-19 21:50:14,118 - DEBUG - https://httpbin.org:443 "GET /status/200 HTTP/1.1" 200 0
+2026-04-19 21:50:14,119 - DEBUG - Request: GET https://httpbin.org/status/200
+2026-04-19 21:50:14,119 - DEBUG - Response: 200, Time: 11435.12ms
+2026-04-19 21:50:14,119 - INFO - Publishing results to: enhanced_test
+2026-04-19 21:50:14,120 - INFO - Test execution completed
+2026-04-19 21:50:33,229 - INFO - Starting API testing with contract: examples/httpbin_test.yaml
+2026-04-19 21:50:33,230 - INFO - Environment: default, Base URL: https://httpbin.org
+2026-04-19 21:50:33,235 - INFO - Generating test cases...
+2026-04-19 21:50:33,236 - INFO - Generated 3 test cases after filtering
+2026-04-19 21:50:33,236 - INFO - Generating Gherkin feature files...
+2026-04-19 21:50:33,236 - INFO - Executing 3 tests against: https://httpbin.org
+2026-04-19 21:50:33,238 - DEBUG - Starting new HTTPS connection (1): httpbin.org:443
+2026-04-19 21:50:33,494 - DEBUG - https://httpbin.org:443 "GET /get?param1=RDBMhGsOjh&param2=19 HTTP/1.1" 200 388
+2026-04-19 21:50:33,494 - DEBUG - Request: GET https://httpbin.org/get
+2026-04-19 21:50:33,495 - DEBUG - Response: 200, Time: 257.80ms
+2026-04-19 21:50:33,550 - DEBUG - https://httpbin.org:443 "POST /post HTTP/1.1" 200 401
+2026-04-19 21:50:33,551 - DEBUG - Request: POST https://httpbin.org/post
+2026-04-19 21:50:33,551 - DEBUG - Response: 200, Time: 55.63ms
+2026-04-19 21:50:33,606 - DEBUG - https://httpbin.org:443 "GET /status/200 HTTP/1.1" 200 0
+2026-04-19 21:50:33,607 - DEBUG - Request: GET https://httpbin.org/status/200
+2026-04-19 21:50:33,607 - DEBUG - Response: 200, Time: 55.45ms
+2026-04-19 21:50:33,607 - INFO - Publishing results to: enhanced_test
+2026-04-19 21:50:33,611 - INFO - Test execution completed

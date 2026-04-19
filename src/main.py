@@ -2,6 +2,7 @@ import argparse
 import os
 import logging
 import json
+import yaml
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from input_parser import InputParser
 from test_generator import TestGenerator
@@ -22,7 +23,7 @@ logging.basicConfig(
 def main():
     parser = argparse.ArgumentParser(description="Professional API Testing Tool")
     parser.add_argument("--contract", required=True, help="Path to contract/specification file")
-    parser.add_argument("--metadata", help="Path to metadata/configuration file (YAML)")
+    parser.add_argument("--metadata", nargs='+', help="Path(s) to metadata/configuration file(s) (YAML)")
     parser.add_argument("--base-url", help="Base URL of the API")
     parser.add_argument("--env", default="default", help="Environment configuration (dev, staging, prod)")
     parser.add_argument("--output-dir", default="output", help="Directory to save test results")
@@ -47,11 +48,14 @@ def main():
     # Load authentication configuration
     auth_config = load_auth_config(args.auth) if args.auth else {}
 
+    # Load metadata from one or more YAML files
+    metadata = load_metadata_files(args.metadata)
+
     logging.info(f"Starting API testing with contract: {args.contract}")
     logging.info(f"Environment: {args.env}, Base URL: {base_url}")
 
     # 1. Parse Input
-    input_parser = InputParser(args.contract, args.metadata, args.contract_type)
+    input_parser = InputParser(args.contract, metadata_source=metadata, contract_type=args.contract_type)
     endpoints = input_parser.get_endpoints()
     schemas = input_parser.get_schemas()
 
@@ -118,6 +122,32 @@ def load_environment_config(env_name, base_url_override=None):
 
     return config.get(env_name, config['default'])
 
+def merge_metadata(base, override):
+    for key, value in override.items():
+        if key in base and isinstance(base[key], dict) and isinstance(value, dict):
+            merge_metadata(base[key], value)
+        else:
+            base[key] = value
+    return base
+
+def load_metadata_files(metadata_paths):
+    if not metadata_paths:
+        return {}
+
+    metadata = {}
+    for path in metadata_paths:
+        if not os.path.exists(path):
+            logging.warning(f"Metadata file not found: {path}")
+            continue
+        try:
+            with open(path, 'r') as f:
+                loaded = yaml.safe_load(f) or {}
+                merge_metadata(metadata, loaded)
+        except Exception as e:
+            logging.warning(f"Could not load metadata file {path}: {e}")
+    return metadata
+
+
 def load_auth_config(auth_file):
     """Load authentication configuration."""
     if not auth_file or not os.path.exists(auth_file):
@@ -128,7 +158,6 @@ def load_auth_config(auth_file):
             if auth_file.endswith('.json'):
                 return json.load(f)
             else:
-                import yaml
                 return yaml.safe_load(f)
     except Exception as e:
         logging.error(f"Could not load auth config: {e}")

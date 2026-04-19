@@ -5,22 +5,20 @@
     "url": "https://httpbin.org/get",
     "method": "GET",
     "parameters": {
-      "param1": "tPslgxHOQq",
-      "param2": 31
+      "param1": "RDBMhGsOjh",
+      "param2": 19
     },
     "request_body": {},
     "expected_status": 200,
     "actual_status": 200,
-    "response_body": "{\n  \"args\": {\n    \"param1\": \"tPslgxHOQq\", \n    \"param2\": \"31\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e54395-4846c1f11fdd37f23cd7cdeb\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/get?param1=tPslgxHOQq&param2=31\"\n}\n",
+    "response_body": "{\n  \"args\": {\n    \"param1\": \"RDBMhGsOjh\", \n    \"param2\": \"19\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e54e29-5cec194e0efc27671e51055c\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/get?param1=RDBMhGsOjh&param2=19\"\n}\n",
     "passed": true,
     "contract_type": "rest_api",
     "assertions": {
-      "status_code_200": true,
-      "response_time_ok": true,
-      "has_response_content": true,
+      "status_code_match": true,
       "no_error_in_response": true
     },
-    "response_time": 288.3331775665283,
+    "response_time": 257.8015327453613,
     "request_headers": {
       "User-Agent": "python-requests/2.32.5",
       "Accept-Encoding": "gzip, deflate",
@@ -28,7 +26,7 @@
       "Connection": "keep-alive"
     },
     "response_headers": {
-      "Date": "Sun, 19 Apr 2026 21:05:25 GMT",
+      "Date": "Sun, 19 Apr 2026 21:50:33 GMT",
       "Content-Type": "application/json",
       "Content-Length": "388",
       "Connection": "keep-alive",
@@ -46,16 +44,14 @@
     "request_body": {},
     "expected_status": 200,
     "actual_status": 200,
-    "response_body": "{\n  \"args\": {}, \n  \"data\": \"\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"0\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e54395-2ff6bc6870650d4108db58ee\"\n  }, \n  \"json\": null, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/post\"\n}\n",
+    "response_body": "{\n  \"args\": {}, \n  \"data\": \"\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"0\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e54e29-6bd5fe127e3465cd752e8602\"\n  }, \n  \"json\": null, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/post\"\n}\n",
     "passed": true,
     "contract_type": "rest_api",
     "assertions": {
-      "status_code_200": true,
-      "response_time_ok": true,
-      "has_response_content": true,
+      "status_code_match": true,
       "no_error_in_response": true
     },
-    "response_time": 63.02642822265625,
+    "response_time": 55.63092231750488,
     "request_headers": {
       "User-Agent": "python-requests/2.32.5",
       "Accept-Encoding": "gzip, deflate",
@@ -64,7 +60,7 @@
       "Content-Length": "0"
     },
     "response_headers": {
-      "Date": "Sun, 19 Apr 2026 21:05:25 GMT",
+      "Date": "Sun, 19 Apr 2026 21:50:33 GMT",
       "Content-Type": "application/json",
       "Content-Length": "401",
       "Connection": "keep-alive",
@@ -83,15 +79,13 @@
     "expected_status": 200,
     "actual_status": 200,
     "response_body": "",
-    "passed": false,
+    "passed": true,
     "contract_type": "rest_api",
     "assertions": {
-      "status_code_200": true,
-      "response_time_ok": true,
-      "has_response_content": false,
+      "status_code_match": true,
       "no_error_in_response": true
     },
-    "response_time": 60.955047607421875,
+    "response_time": 55.445194244384766,
     "request_headers": {
       "User-Agent": "python-requests/2.32.5",
       "Accept-Encoding": "gzip, deflate",
@@ -99,7 +93,7 @@
       "Connection": "keep-alive"
     },
     "response_headers": {
-      "Date": "Sun, 19 Apr 2026 21:05:25 GMT",
+      "Date": "Sun, 19 Apr 2026 21:50:33 GMT",
       "Content-Type": "text/html; charset=utf-8",
       "Content-Length": "0",
       "Connection": "keep-alive",

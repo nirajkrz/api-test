@@ -1,3 +1,4 @@
+import os
 import yaml
 import requests
 import json
@@ -6,9 +7,9 @@ from typing import Dict, Any, List
 class InputParser:
     """Parses various contract/specification formats and metadata files."""
 
-    def __init__(self, contract_path: str, metadata_path: str = None, contract_type: str = None):
+    def __init__(self, contract_path: str, metadata_source=None, contract_type: str = None):
         self.contract_path = contract_path
-        self.metadata_path = metadata_path
+        self.metadata_source = metadata_source
         self.contract_type = contract_type or self._detect_contract_type()
         self.contract = self._load_contract()
         self.metadata = self._load_metadata()
@@ -217,14 +218,29 @@ class InputParser:
         return type_mapping.get(abi_type, 'string')
 
     def _load_metadata(self) -> Dict[str, Any]:
-        """Loads metadata/configuration from a YAML or properties file."""
-        if not self.metadata_path:
+        """Loads metadata/configuration from YAML files, dicts, or other sources."""
+        if not self.metadata_source:
             return {}
-        with open(self.metadata_path, 'r') as f:
-            if self.metadata_path.endswith(('.yaml', '.yml')):
-                return yaml.safe_load(f)
-            # Add support for .properties if needed
-            return {}
+
+        if isinstance(self.metadata_source, dict):
+            return self.metadata_source
+
+        if isinstance(self.metadata_source, (list, tuple)):
+            metadata = {}
+            for source in self.metadata_source:
+                if isinstance(source, dict):
+                    metadata.update(source)
+                elif isinstance(source, str) and os.path.exists(source):
+                    with open(source, 'r') as f:
+                        metadata.update(yaml.safe_load(f) or {})
+            return metadata
+
+        if isinstance(self.metadata_source, str):
+            if os.path.exists(self.metadata_source):
+                with open(self.metadata_source, 'r') as f:
+                    return yaml.safe_load(f) or {}
+
+        return {}
 
     def get_endpoints(self) -> List[Dict[str, Any]]:
         """Extracts endpoint information from the parsed contract."""
