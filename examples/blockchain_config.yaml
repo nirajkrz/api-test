@@ -1,0 +1,15 @@
+# Blockchain.com API Testing Configuration
+environment:
+  base_url: "https://blockchain.info"
+
+test_data:
+  block_hash: "00000000000000000007d0f98d9edca880a6c124e25095712df8952e0439ac7409738a"
+  tx_hash: "b6f6991d03df0e2e04dafffcd6bc418aac66049e2cd74b80f14ac86db1e3f0da"
+  bitcoin_address: "1AJbsFZ64EpEfS5UAjAfcUG8pH8Jn3rn1F"
+
+custom_assertions:
+  - endpoint: "/latestblock"
+    method: "GET"
+    assertions:
+      - type: "status_code"
+        expected: 200
