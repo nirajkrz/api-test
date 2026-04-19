@@ -196,6 +196,31 @@ Reporting:
   --generate-report       Generate HTML/JSON reports (default: true)
 ```
 
+### Authentication Setup
+
+Use the `--auth` flag to keep credentials separate from contract definitions and environment settings.
+
+- `--auth auth.json` loads authentication details from a secured file
+- Keep auth config out of source control and store secrets in Vault or CI/CD secrets
+- Combine with `--env staging` to separate environment values from credentials
+
+Example:
+```bash
+python src/main.py --contract examples/swagger.yaml --env staging --auth auth.json
+```
+
+Supported auth types:
+- `bearer` tokens
+- `basic` authentication
+- `api_key`
+- `oauth2`
+
+### Example: separate auth and environment config
+```bash
+# Environment file contains base URL, timeout, retry
+python src/main.py --contract examples/swagger.yaml --env staging --auth auth.json
+```
+
 ### Environment Variables
 ```bash
 export API_TEST_BASE_URL="https://api.example.com"
@@ -227,6 +252,10 @@ export API_TEST_ENV="staging"
 ```
 
 ### Authentication Configuration (`auth.json`)
+
+Use separate auth configuration files for sensitive credentials. This keeps auth details isolated from contract definitions and environment settings.
+
+Bearer token example:
 ```json
 {
   "type": "bearer",
@@ -234,6 +263,7 @@ export API_TEST_ENV="staging"
 }
 ```
 
+Basic authentication example:
 ```json
 {
   "type": "basic",
@@ -242,11 +272,24 @@ export API_TEST_ENV="staging"
 }
 ```
 
+API Key example:
 ```json
 {
   "type": "api_key",
+  "location": "header",
   "header_name": "X-API-Key",
   "api_key": "your-api-key"
+}
+```
+
+OAuth2 example:
+```json
+{
+  "type": "oauth2",
+  "token_url": "https://auth.example.com/oauth/token",
+  "client_id": "your-client-id",
+  "client_secret": "your-client-secret",
+  "scopes": ["read", "write"]
 }
 ```
 
@@ -301,6 +344,54 @@ security_tests:
     params: { "id": "'; DROP TABLE users; --" }
     expected_status: 400
 ```
+
+## Minimal Metadata Workflow
+
+When full API contract details are unavailable, start with only the information you do have:
+- HTTP method and endpoint path
+- sample request payload or query parameters
+- expected response status
+- response keys or basic output shape
+
+Keep auth and environment configuration separate from payload/test metadata by using `auth.json` and `environments.json`.
+
+### Minimal metadata example
+```yaml
+minimal_endpoints:
+  - path: /orders
+    method: POST
+    request:
+      body:
+        customer_id: 123
+        amount: 100.0
+    expected:
+      status_code: 201
+      response_keys:
+        - order_id
+        - status
+```
+
+### How to use minimal metadata
+1. Create a minimal metadata file with only known fields.
+2. Run the tool with `--auth` and `--env` to keep credentials and environment separate.
+3. Capture actual API responses and use them to refine the metadata.
+4. Add schema and assertion details over time as more API behavior becomes known.
+
+Example command:
+```bash
+python src/main.py \
+  --contract examples/swagger.yaml \
+  --metadata examples/minimal_metadata.yaml \
+  --env staging \
+  --auth auth.json
+```
+
+### Recommended iteration process
+- Start with minimal metadata when only request/response examples exist
+- Supplement with real request/response examples as you discover them
+- Keep auth and environment config separate from test metadata
+- Re-run tests after each update to refine assertions
+- Expand minimal metadata into a fuller contract as the API becomes better defined
 
 ## 📄 Supported Formats
 
