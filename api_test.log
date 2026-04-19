@@ -1,0 +1,51 @@
+2026-04-19 21:05:02,176 - INFO - Starting API testing with contract: examples/httpbin_test.yaml
+2026-04-19 21:05:02,177 - INFO - Environment: dev, Base URL: http://localhost:3000
+2026-04-19 21:05:02,187 - INFO - Generating test cases...
+2026-04-19 21:05:02,187 - INFO - Generated 9 test cases after filtering
+2026-04-19 21:05:02,188 - INFO - Generating Gherkin feature files...
+2026-04-19 21:05:02,188 - INFO - Executing 9 tests against: http://localhost:3000
+2026-04-19 21:05:02,189 - INFO - Executing tests with 2 parallel workers
+2026-04-19 21:05:02,197 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:02,200 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:02,209 - ERROR - Test Positive: GET /get generated an exception: 'TestExecutor' object has no attribute 'results'
+2026-04-19 21:05:02,212 - ERROR - Test Negative: Invalid data type for parameter 'param1' in GET /get generated an exception: 'TestExecutor' object has no attribute 'results'
+2026-04-19 21:05:02,220 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:02,224 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:02,238 - ERROR - Test Edge: Null value for optional parameter 'param1' in GET /get generated an exception: 'TestExecutor' object has no attribute 'results'
+2026-04-19 21:05:02,240 - ERROR - Test Negative: Invalid data type for parameter 'param2' in GET /get generated an exception: 'TestExecutor' object has no attribute 'results'
+2026-04-19 21:05:02,241 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:02,247 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:02,259 - ERROR - Test Edge: Null value for optional parameter 'param2' in GET /get generated an exception: 'TestExecutor' object has no attribute 'results'
+2026-04-19 21:05:02,263 - ERROR - Test Security: SQL Injection in param1 - GET /get generated an exception: 'TestExecutor' object has no attribute 'results'
+2026-04-19 21:05:02,266 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:02,273 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:02,274 - ERROR - Test Positive: POST /post generated an exception: 'TestExecutor' object has no attribute 'results'
+2026-04-19 21:05:02,280 - ERROR - Test Security: XSS in request body - POST /post generated an exception: 'TestExecutor' object has no attribute 'results'
+2026-04-19 21:05:02,276 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:02,283 - ERROR - Test Positive: GET /status/200 generated an exception: 'TestExecutor' object has no attribute 'results'
+2026-04-19 21:05:02,290 - INFO - Publishing results to: enhanced_test
+2026-04-19 21:05:08,770 - INFO - Starting API testing with contract: examples/httpbin_test.yaml
+2026-04-19 21:05:08,771 - INFO - Environment: dev, Base URL: http://localhost:3000
+2026-04-19 21:05:08,777 - INFO - Generating test cases...
+2026-04-19 21:05:08,777 - INFO - Generated 9 test cases after filtering
+2026-04-19 21:05:08,777 - INFO - Generating Gherkin feature files...
+2026-04-19 21:05:08,778 - INFO - Executing 9 tests against: http://localhost:3000
+2026-04-19 21:05:08,779 - DEBUG - Starting new HTTP connection (1): localhost:3000
+2026-04-19 21:05:24,748 - INFO - Starting API testing with contract: examples/httpbin_test.yaml
+2026-04-19 21:05:24,748 - INFO - Environment: default, Base URL: https://httpbin.org
+2026-04-19 21:05:24,771 - INFO - Generating test cases...
+2026-04-19 21:05:24,771 - INFO - Generated 3 test cases after filtering
+2026-04-19 21:05:24,771 - INFO - Generating Gherkin feature files...
+2026-04-19 21:05:24,772 - INFO - Executing 3 tests against: https://httpbin.org
+2026-04-19 21:05:24,774 - DEBUG - Starting new HTTPS connection (1): httpbin.org:443
+2026-04-19 21:05:25,060 - DEBUG - https://httpbin.org:443 "GET /get?param1=tPslgxHOQq&param2=31 HTTP/1.1" 200 388
+2026-04-19 21:05:25,061 - DEBUG - Request: GET https://httpbin.org/get
+2026-04-19 21:05:25,061 - DEBUG - Response: 200, Time: 288.33ms
+2026-04-19 21:05:25,123 - DEBUG - https://httpbin.org:443 "POST /post HTTP/1.1" 200 401
+2026-04-19 21:05:25,124 - DEBUG - Request: POST https://httpbin.org/post
+2026-04-19 21:05:25,124 - DEBUG - Response: 200, Time: 63.03ms
+2026-04-19 21:05:25,185 - DEBUG - https://httpbin.org:443 "GET /status/200 HTTP/1.1" 200 0
+2026-04-19 21:05:25,186 - DEBUG - Request: GET https://httpbin.org/status/200
+2026-04-19 21:05:25,186 - DEBUG - Response: 200, Time: 60.96ms
+2026-04-19 21:05:25,186 - INFO - Publishing results to: enhanced_test
+2026-04-19 21:05:25,187 - INFO - Test execution completed

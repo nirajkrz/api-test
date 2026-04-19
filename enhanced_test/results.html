@@ -1,0 +1,151 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>API Test Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1 { color: #333; }
+                .summary { margin-bottom: 20px; }
+                .summary p { margin: 5px 0; }
+                .passed { color: green; }
+                .failed { color: red; }
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .details { display: none; margin-top: 10px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ddd; }
+                .toggle-details { cursor: pointer; color: blue; text-decoration: underline; }
+            </style>
+            <script>
+                function toggleDetails(id) {
+                    var details = document.getElementById(id);
+                    if (details.style.display === "none") {
+                        details.style.display = "block";
+                    } else {
+                        details.style.display = "none";
+                    }
+                }
+            </script>
+        </head>
+        <body>
+            <h1>API Test Report</h1>
+            <div class="summary">
+                <p>Total Tests: 3</p>
+                <p class="passed">Passed: 2</p>
+                <p class="failed">Failed: 1</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Case</th>
+                        <th>Type</th>
+                        <th>Contract Type</th>
+                        <th>Method</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Response Time</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                    <tr>
+                        <td>Positive: GET /get</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/get</td>
+                        <td class="passed">Passed</td>
+                        <td>288.33ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-0')">View Details</span>
+                            <div id="details-0" class="details">
+                                <p><strong>Parameters:</strong> {
+  "param1": "tPslgxHOQq",
+  "param2": 31
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {
+    "param1": "tPslgxHOQq", 
+    "param2": "31"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e54395-4846c1f11fdd37f23cd7cdeb"
+  }, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/get?param1=tPslgxHOQq&param2=31"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: POST /post</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/post</td>
+                        <td class="passed">Passed</td>
+                        <td>63.03ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-1')">View Details</span>
+                            <div id="details-1" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "0", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e54395-2ff6bc6870650d4108db58ee"
+  }, 
+  "json": null, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/post"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: GET /status/200</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/status/200</td>
+                        <td class="failed">Failed</td>
+                        <td>60.96ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-2')">View Details</span>
+                            <div id="details-2" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre></pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                </tbody>
+            </table>
+        </body>
+        </html>
+        

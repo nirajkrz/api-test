@@ -2,3 +2,5 @@ requests
 PyYAML
 pytest
 jinja2
+jsonschema
+urllib3

@@ -1,0 +1,111 @@
+[
+  {
+    "name": "Positive: GET /get",
+    "type": "positive",
+    "url": "https://httpbin.org/get",
+    "method": "GET",
+    "parameters": {
+      "param1": "tPslgxHOQq",
+      "param2": 31
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {\n    \"param1\": \"tPslgxHOQq\", \n    \"param2\": \"31\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e54395-4846c1f11fdd37f23cd7cdeb\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/get?param1=tPslgxHOQq&param2=31\"\n}\n",
+    "passed": true,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 288.3331775665283,
+    "request_headers": {
+      "User-Agent": "python-requests/2.32.5",
+      "Accept-Encoding": "gzip, deflate",
+      "Accept": "*/*",
+      "Connection": "keep-alive"
+    },
+    "response_headers": {
+      "Date": "Sun, 19 Apr 2026 21:05:25 GMT",
+      "Content-Type": "application/json",
+      "Content-Length": "388",
+      "Connection": "keep-alive",
+      "Server": "gunicorn/19.9.0",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true"
+    }
+  },
+  {
+    "name": "Positive: POST /post",
+    "type": "positive",
+    "url": "https://httpbin.org/post",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {}, \n  \"data\": \"\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"0\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e54395-2ff6bc6870650d4108db58ee\"\n  }, \n  \"json\": null, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/post\"\n}\n",
+    "passed": true,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 63.02642822265625,
+    "request_headers": {
+      "User-Agent": "python-requests/2.32.5",
+      "Accept-Encoding": "gzip, deflate",
+      "Accept": "*/*",
+      "Connection": "keep-alive",
+      "Content-Length": "0"
+    },
+    "response_headers": {
+      "Date": "Sun, 19 Apr 2026 21:05:25 GMT",
+      "Content-Type": "application/json",
+      "Content-Length": "401",
+      "Connection": "keep-alive",
+      "Server": "gunicorn/19.9.0",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true"
+    }
+  },
+  {
+    "name": "Positive: GET /status/200",
+    "type": "positive",
+    "url": "https://httpbin.org/status/200",
+    "method": "GET",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 200,
+    "response_body": "",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": false,
+      "no_error_in_response": true
+    },
+    "response_time": 60.955047607421875,
+    "request_headers": {
+      "User-Agent": "python-requests/2.32.5",
+      "Accept-Encoding": "gzip, deflate",
+      "Accept": "*/*",
+      "Connection": "keep-alive"
+    },
+    "response_headers": {
+      "Date": "Sun, 19 Apr 2026 21:05:25 GMT",
+      "Content-Type": "text/html; charset=utf-8",
+      "Content-Length": "0",
+      "Connection": "keep-alive",
+      "Server": "gunicorn/19.9.0",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true"
+    }
+  }
+]
