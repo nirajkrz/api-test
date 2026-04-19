@@ -1,0 +1,133 @@
+[
+  {
+    "name": "Positive: GET /users",
+    "type": "positive",
+    "url": "http://httpbin.org/users",
+    "method": "GET",
+    "parameters": {
+      "limit": 29,
+      "offset": 82
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'limit' in GET /users",
+    "type": "negative",
+    "url": "http://httpbin.org/users",
+    "method": "GET",
+    "parameters": {
+      "limit": "not-an-integer",
+      "offset": 90
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'offset' in GET /users",
+    "type": "negative",
+    "url": "http://httpbin.org/users",
+    "method": "GET",
+    "parameters": {
+      "limit": 94,
+      "offset": "not-an-integer"
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false
+  },
+  {
+    "name": "Edge: Null value for optional parameter 'limit' in GET /users",
+    "type": "edge",
+    "url": "http://httpbin.org/users",
+    "method": "GET",
+    "parameters": {
+      "limit": null,
+      "offset": 41
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false
+  },
+  {
+    "name": "Edge: Null value for optional parameter 'offset' in GET /users",
+    "type": "edge",
+    "url": "http://httpbin.org/users",
+    "method": "GET",
+    "parameters": {
+      "limit": 1,
+      "offset": null
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false
+  },
+  {
+    "name": "Positive: POST /users",
+    "type": "positive",
+    "url": "http://httpbin.org/users",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {
+      "name": "cyAyGXgCzb",
+      "email": "IAnAbAolQg",
+      "age": 37
+    },
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false
+  },
+  {
+    "name": "Positive: GET /users/{id}",
+    "type": "positive",
+    "url": "http://httpbin.org/users/{id}",
+    "method": "GET",
+    "parameters": {
+      "id": "KMmxlleSiX"
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false
+  },
+  {
+    "name": "Negative: Missing required parameter 'id' in GET /users/{id}",
+    "type": "negative",
+    "url": "http://httpbin.org/users/{id}",
+    "method": "GET",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'id' in GET /users/{id}",
+    "type": "negative",
+    "url": "http://httpbin.org/users/{id}",
+    "method": "GET",
+    "parameters": {
+      "id": 123
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false
+  }
+]

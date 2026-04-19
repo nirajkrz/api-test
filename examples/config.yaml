@@ -1,0 +1,22 @@
+# API Testing Configuration
+environment:
+  base_url: "http://localhost:8000"
+  auth_token: "your-auth-token"
+
+test_data:
+  users:
+    - name: "John Doe"
+      email: "john.doe@example.com"
+      age: 30
+    - name: "Jane Smith"
+      email: "jane.smith@example.com"
+      age: 25
+
+custom_assertions:
+  - endpoint: "/users"
+    method: "GET"
+    assertions:
+      - type: "status_code"
+        expected: 200
+      - type: "response_body_contains"
+        expected: "users"

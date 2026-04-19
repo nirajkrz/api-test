@@ -1,0 +1,275 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>API Test Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1 { color: #333; }
+                .summary { margin-bottom: 20px; }
+                .summary p { margin: 5px 0; }
+                .passed { color: green; }
+                .failed { color: red; }
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .details { display: none; margin-top: 10px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ddd; }
+                .toggle-details { cursor: pointer; color: blue; text-decoration: underline; }
+            </style>
+            <script>
+                function toggleDetails(id) {
+                    var details = document.getElementById(id);
+                    if (details.style.display === "none") {
+                        details.style.display = "block";
+                    } else {
+                        details.style.display = "none";
+                    }
+                }
+            </script>
+        </head>
+        <body>
+            <h1>API Test Report</h1>
+            <div class="summary">
+                <p>Total Tests: 9</p>
+                <p class="passed">Passed: 0</p>
+                <p class="failed">Failed: 9</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Case</th>
+                        <th>Type</th>
+                        <th>Method</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                    <tr>
+                        <td>Positive: GET /users</td>
+                        <td>positive</td>
+                        <td>GET</td>
+                        <td>http://httpbin.org/users</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-0')">View Details</span>
+                            <div id="details-0" class="details">
+                                <p><strong>Parameters:</strong> {
+  "limit": 29,
+  "offset": 82
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'limit' in GET /users</td>
+                        <td>negative</td>
+                        <td>GET</td>
+                        <td>http://httpbin.org/users</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-1')">View Details</span>
+                            <div id="details-1" class="details">
+                                <p><strong>Parameters:</strong> {
+  "limit": "not-an-integer",
+  "offset": 90
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'offset' in GET /users</td>
+                        <td>negative</td>
+                        <td>GET</td>
+                        <td>http://httpbin.org/users</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-2')">View Details</span>
+                            <div id="details-2" class="details">
+                                <p><strong>Parameters:</strong> {
+  "limit": 94,
+  "offset": "not-an-integer"
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Edge: Null value for optional parameter 'limit' in GET /users</td>
+                        <td>edge</td>
+                        <td>GET</td>
+                        <td>http://httpbin.org/users</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-3')">View Details</span>
+                            <div id="details-3" class="details">
+                                <p><strong>Parameters:</strong> {
+  "limit": null,
+  "offset": 41
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Edge: Null value for optional parameter 'offset' in GET /users</td>
+                        <td>edge</td>
+                        <td>GET</td>
+                        <td>http://httpbin.org/users</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-4')">View Details</span>
+                            <div id="details-4" class="details">
+                                <p><strong>Parameters:</strong> {
+  "limit": 1,
+  "offset": null
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: POST /users</td>
+                        <td>positive</td>
+                        <td>POST</td>
+                        <td>http://httpbin.org/users</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-5')">View Details</span>
+                            <div id="details-5" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {
+  "name": "cyAyGXgCzb",
+  "email": "IAnAbAolQg",
+  "age": 37
+}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: GET /users/{id}</td>
+                        <td>positive</td>
+                        <td>GET</td>
+                        <td>http://httpbin.org/users/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-6')">View Details</span>
+                            <div id="details-6" class="details">
+                                <p><strong>Parameters:</strong> {
+  "id": "KMmxlleSiX"
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Missing required parameter 'id' in GET /users/{id}</td>
+                        <td>negative</td>
+                        <td>GET</td>
+                        <td>http://httpbin.org/users/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-7')">View Details</span>
+                            <div id="details-7" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'id' in GET /users/{id}</td>
+                        <td>negative</td>
+                        <td>GET</td>
+                        <td>http://httpbin.org/users/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-8')">View Details</span>
+                            <div id="details-8" class="details">
+                                <p><strong>Parameters:</strong> {
+  "id": 123
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                </tbody>
+            </table>
+        </body>
+        </html>
+        
