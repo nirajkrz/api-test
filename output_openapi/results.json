@@ -2,10 +2,10 @@
   {
     "name": "Positive: GET /users",
     "type": "positive",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
-      "limit": 44,
+      "limit": 69,
       "offset": 67
     },
     "request_body": {},
@@ -18,11 +18,11 @@
   {
     "name": "Negative: Invalid data type for parameter 'limit' in GET /users",
     "type": "negative",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
       "limit": "not-an-integer",
-      "offset": 96
+      "offset": 20
     },
     "request_body": {},
     "expected_status": 400,
@@ -34,10 +34,10 @@
   {
     "name": "Negative: Invalid data type for parameter 'offset' in GET /users",
     "type": "negative",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
-      "limit": 25,
+      "limit": 53,
       "offset": "not-an-integer"
     },
     "request_body": {},
@@ -50,11 +50,11 @@
   {
     "name": "Edge: Null value for optional parameter 'limit' in GET /users",
     "type": "edge",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
       "limit": null,
-      "offset": 99
+      "offset": 90
     },
     "request_body": {},
     "expected_status": 200,
@@ -66,10 +66,10 @@
   {
     "name": "Edge: Null value for optional parameter 'offset' in GET /users",
     "type": "edge",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
-      "limit": 83,
+      "limit": 33,
       "offset": null
     },
     "request_body": {},
@@ -82,13 +82,13 @@
   {
     "name": "Positive: POST /users",
     "type": "positive",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "POST",
     "parameters": {},
     "request_body": {
-      "name": "BggRWowpSK",
-      "email": "wwexKkXPGP",
-      "age": 58
+      "name": "kPxuvXUiBU",
+      "email": "QyOEvdwqgV",
+      "age": 84
     },
     "expected_status": 200,
     "actual_status": 404,
@@ -99,10 +99,10 @@
   {
     "name": "Positive: GET /users/{id}",
     "type": "positive",
-    "url": "http://httpbin.org/users/{id}",
+    "url": "https://httpbin.org/users/{id}",
     "method": "GET",
     "parameters": {
-      "id": "ZlbIDtgKAL"
+      "id": "CCrnXHtAFG"
     },
     "request_body": {},
     "expected_status": 200,
@@ -114,7 +114,7 @@
   {
     "name": "Negative: Missing required parameter 'id' in GET /users/{id}",
     "type": "negative",
-    "url": "http://httpbin.org/users/{id}",
+    "url": "https://httpbin.org/users/{id}",
     "method": "GET",
     "parameters": {},
     "request_body": {},
@@ -127,7 +127,7 @@
   {
     "name": "Negative: Invalid data type for parameter 'id' in GET /users/{id}",
     "type": "negative",
-    "url": "http://httpbin.org/users/{id}",
+    "url": "https://httpbin.org/users/{id}",
     "method": "GET",
     "parameters": {
       "id": 123

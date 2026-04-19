@@ -1,0 +1,651 @@
+[
+  {
+    "name": "Positive: GET /products",
+    "type": "positive",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "tXskPZbIYV",
+      "price_min": 74.86410726629627,
+      "price_max": 65.16261766277334,
+      "in_stock": true,
+      "limit": 21
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 280.92
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'category' in GET /products",
+    "type": "negative",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": 123,
+      "price_min": 61.233875129173704,
+      "price_max": 45.80400500541207,
+      "in_stock": false,
+      "limit": 10
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 260.567
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'price_min' in GET /products",
+    "type": "negative",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "zeyxNoADWT",
+      "price_min": "not-a-number",
+      "price_max": 41.15163711686629,
+      "in_stock": false,
+      "limit": 98
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 233.453
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'price_max' in GET /products",
+    "type": "negative",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "awxUyhcDez",
+      "price_min": 43.395365930612584,
+      "price_max": "not-a-number",
+      "in_stock": true,
+      "limit": 98
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 267.791
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'in_stock' in GET /products",
+    "type": "negative",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "aXyyBhUzOX",
+      "price_min": 83.41071698600668,
+      "price_max": 88.53996140248893,
+      "in_stock": "not-a-boolean",
+      "limit": 18
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 560.489
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'limit' in GET /products",
+    "type": "negative",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "MydehvipAm",
+      "price_min": 5.4893129953908195,
+      "price_max": 6.972589573982157,
+      "in_stock": false,
+      "limit": "not-an-integer"
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 223.636
+  },
+  {
+    "name": "Edge: Null value for optional parameter 'category' in GET /products",
+    "type": "edge",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": null,
+      "price_min": 39.943102429126384,
+      "price_max": 68.47596467903321,
+      "in_stock": false,
+      "limit": 89
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 672.706
+  },
+  {
+    "name": "Edge: Null value for optional parameter 'price_min' in GET /products",
+    "type": "edge",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "RqohkBaNYk",
+      "price_min": null,
+      "price_max": 79.94041121062308,
+      "in_stock": false,
+      "limit": 65
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 275.791
+  },
+  {
+    "name": "Edge: Null value for optional parameter 'price_max' in GET /products",
+    "type": "edge",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "BSqXQmInAM",
+      "price_min": 79.02171812867876,
+      "price_max": null,
+      "in_stock": false,
+      "limit": 24
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 258.759
+  },
+  {
+    "name": "Edge: Null value for optional parameter 'in_stock' in GET /products",
+    "type": "edge",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "NEoogVzdcg",
+      "price_min": 1.0755159046052438,
+      "price_max": 79.8132862837229,
+      "in_stock": null,
+      "limit": 73
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 248.178
+  },
+  {
+    "name": "Edge: Null value for optional parameter 'limit' in GET /products",
+    "type": "edge",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "JFUjiVMKgO",
+      "price_min": 28.965690618496446,
+      "price_max": 55.75575084299337,
+      "in_stock": true,
+      "limit": null
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 262.778
+  },
+  {
+    "name": "Data-driven: Product search by category - {'params': {'category': 'electronics'}, 'expected_status': 200}",
+    "type": "data_driven",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "electronics"
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 331.472
+  },
+  {
+    "name": "Data-driven: Product search by category - {'params': {'category': 'clothing'}, 'expected_status': 200}",
+    "type": "data_driven",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "clothing"
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 273.363
+  },
+  {
+    "name": "Data-driven: Product search by category - {'params': {'category': 'books'}, 'expected_status': 200}",
+    "type": "data_driven",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "books"
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 222.242
+  },
+  {
+    "name": "Data-driven: Product search by category - {'params': {'category': 'invalid'}, 'expected_status': 400}",
+    "type": "data_driven",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "invalid"
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 327.914
+  },
+  {
+    "name": "Security: SQL injection attempt",
+    "type": "security",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "'; DROP TABLE products; --"
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 235.697
+  },
+  {
+    "name": "Security: SQL Injection in category - GET /products",
+    "type": "security",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {
+      "category": "'; DROP TABLE users; --"
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 261.241
+  },
+  {
+    "name": "Positive: POST /products",
+    "type": "positive",
+    "url": "https://httpbin.org/products",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {
+      "name": "iPhone 15",
+      "description": "Latest smartphone",
+      "price": 999.99,
+      "category": "electronics",
+      "in_stock": true,
+      "tags": [
+        "smartphone",
+        "apple",
+        "ios"
+      ]
+    },
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 237.47099999999998
+  },
+  {
+    "name": "Security: XSS attempt",
+    "type": "security",
+    "url": "https://httpbin.org/products",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {
+      "name": "<script>alert('xss')</script>"
+    },
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 251.349
+  },
+  {
+    "name": "Security: XSS in request body - POST /products",
+    "type": "security",
+    "url": "https://httpbin.org/products",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {
+      "name": "<script>alert('xss')</script>"
+    },
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 223.971
+  },
+  {
+    "name": "Positive: GET /products/{id}",
+    "type": "positive",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "GET",
+    "parameters": {
+      "id": "wlLRoRbIqz"
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 262.45099999999996
+  },
+  {
+    "name": "Negative: Missing required parameter 'id' in GET /products/{id}",
+    "type": "negative",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "GET",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 235.711
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'id' in GET /products/{id}",
+    "type": "negative",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "GET",
+    "parameters": {
+      "id": 123
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 223.968
+  },
+  {
+    "name": "Positive: PUT /products/{id}",
+    "type": "positive",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "PUT",
+    "parameters": {
+      "id": "qQoyPjBoeq"
+    },
+    "request_body": {
+      "name": "W3Z",
+      "description": "QwF0iBeFvya8Wa2",
+      "price": 240.6,
+      "category": "clothing",
+      "in_stock": false,
+      "tags": []
+    },
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 405.746
+  },
+  {
+    "name": "Negative: Missing required parameter 'id' in PUT /products/{id}",
+    "type": "negative",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "PUT",
+    "parameters": {},
+    "request_body": {
+      "name": "PKmxv93dq",
+      "description": "8EV7l8DrbYPhxGJY5",
+      "price": 552.57,
+      "category": "electronics",
+      "in_stock": true,
+      "tags": []
+    },
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 828.001
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'id' in PUT /products/{id}",
+    "type": "negative",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "PUT",
+    "parameters": {
+      "id": 123
+    },
+    "request_body": {
+      "name": "CRHCOsuSSiR2",
+      "description": "ynfRzZKcF",
+      "price": 365.21,
+      "category": "electronics",
+      "in_stock": false,
+      "tags": [
+        "B0SZ4jNe2nUcO",
+        "DRhh5pZLGgkn"
+      ]
+    },
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 260.698
+  },
+  {
+    "name": "Security: XSS in request body - PUT /products/{id}",
+    "type": "security",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "PUT",
+    "parameters": {},
+    "request_body": {
+      "name": "<script>alert('xss')</script>"
+    },
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 614.76
+  },
+  {
+    "name": "Positive: DELETE /products/{id}",
+    "type": "positive",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "DELETE",
+    "parameters": {
+      "id": "QyCzLrNaQU"
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 279.912
+  },
+  {
+    "name": "Negative: Missing required parameter 'id' in DELETE /products/{id}",
+    "type": "negative",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "DELETE",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 260.89
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'id' in DELETE /products/{id}",
+    "type": "negative",
+    "url": "https://httpbin.org/products/{id}",
+    "method": "DELETE",
+    "parameters": {
+      "id": 123
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 229.066
+  },
+  {
+    "name": "Positive: POST /orders",
+    "type": "positive",
+    "url": "https://httpbin.org/orders",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {
+      "customer_id": "cust_456",
+      "items": [
+        {
+          "product_id": "prod_3",
+          "quantity": 5
+        }
+      ],
+      "shipping_address": {
+        "street": "456 Oak Ave",
+        "city": "Los Angeles",
+        "zip_code": "90210"
+      }
+    },
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 262.014
+  },
+  {
+    "name": "Security: XSS in request body - POST /orders",
+    "type": "security",
+    "url": "https://httpbin.org/orders",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {
+      "name": "<script>alert('xss')</script>"
+    },
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 247.909
+  },
+  {
+    "name": "Performance: Products list performance",
+    "type": "performance",
+    "url": "https://httpbin.org/products",
+    "method": "GET",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 500,
+    "response_body": "Performance test completed. Avg: 302.43ms, P95: 490.47ms, Errors: 100.0%",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {
+      "p95_response_time": true,
+      "error_rate": false
+    },
+    "performance_metrics": {
+      "avg_response_time": 302.4251699447632,
+      "p95_response_time": 490.46850204467773,
+      "error_rate": 100.0,
+      "total_requests": 10
+    }
+  }
+]

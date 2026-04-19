@@ -1,0 +1,201 @@
+[
+  {
+    "name": "Positive: GET /get",
+    "type": "positive",
+    "url": "https://httpbin.org/get",
+    "method": "GET",
+    "parameters": {
+      "param1": "fKPBLhcPPH",
+      "param2": 21
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {\n    \"param1\": \"fKPBLhcPPH\", \n    \"param2\": \"21\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"2\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e542c9-0f6696cd18d941946f6abfcb\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/get?param1=fKPBLhcPPH&param2=21\"\n}\n",
+    "passed": true,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 465.291
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'param1' in GET /get",
+    "type": "negative",
+    "url": "https://httpbin.org/get",
+    "method": "GET",
+    "parameters": {
+      "param1": 123,
+      "param2": 3
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {\n    \"param1\": \"123\", \n    \"param2\": \"3\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"2\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e542c9-6c0d4c0211733e1d1d8864f5\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/get?param1=123&param2=3\"\n}\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 236.465
+  },
+  {
+    "name": "Negative: Invalid data type for parameter 'param2' in GET /get",
+    "type": "negative",
+    "url": "https://httpbin.org/get",
+    "method": "GET",
+    "parameters": {
+      "param1": "WTKmRZSsRa",
+      "param2": "not-an-integer"
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {\n    \"param1\": \"WTKmRZSsRa\", \n    \"param2\": \"not-an-integer\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"2\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e542c9-52b485e650ee4aab0f10126e\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/get?param1=WTKmRZSsRa&param2=not-an-integer\"\n}\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 375.407
+  },
+  {
+    "name": "Edge: Null value for optional parameter 'param1' in GET /get",
+    "type": "edge",
+    "url": "https://httpbin.org/get",
+    "method": "GET",
+    "parameters": {
+      "param1": null,
+      "param2": 19
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {\n    \"param2\": \"19\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"2\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e542ca-2826deef605658910f2be1c6\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/get?param2=19\"\n}\n",
+    "passed": true,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 241.537
+  },
+  {
+    "name": "Edge: Null value for optional parameter 'param2' in GET /get",
+    "type": "edge",
+    "url": "https://httpbin.org/get",
+    "method": "GET",
+    "parameters": {
+      "param1": "XhzFiklkiy",
+      "param2": null
+    },
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {\n    \"param1\": \"XhzFiklkiy\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"2\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e542ca-664016723d457d320d49cd3b\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/get?param1=XhzFiklkiy\"\n}\n",
+    "passed": true,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 273.658
+  },
+  {
+    "name": "Security: SQL Injection in param1 - GET /get",
+    "type": "security",
+    "url": "https://httpbin.org/get",
+    "method": "GET",
+    "parameters": {
+      "param1": "'; DROP TABLE users; --"
+    },
+    "request_body": {},
+    "expected_status": 400,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {\n    \"param1\": \"'; DROP TABLE users; --\"\n  }, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"2\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e542ca-465e83b07e27fb0b6a9ae793\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/get?param1='%3B+DROP+TABLE+users%3B+--\"\n}\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 422.168
+  },
+  {
+    "name": "Positive: POST /post",
+    "type": "positive",
+    "url": "https://httpbin.org/post",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {}, \n  \"data\": \"{}\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"2\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e542cb-526a2026219ae72b20cdf29b\"\n  }, \n  \"json\": {}, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/post\"\n}\n",
+    "passed": true,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 317.07099999999997
+  },
+  {
+    "name": "Security: XSS in request body - POST /post",
+    "type": "security",
+    "url": "https://httpbin.org/post",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {
+      "name": "<script>alert('xss')</script>"
+    },
+    "expected_status": 400,
+    "actual_status": 200,
+    "response_body": "{\n  \"args\": {}, \n  \"data\": \"{\\\"name\\\": \\\"<script>alert('xss')</script>\\\"}\", \n  \"files\": {}, \n  \"form\": {}, \n  \"headers\": {\n    \"Accept\": \"*/*\", \n    \"Accept-Encoding\": \"gzip, deflate\", \n    \"Content-Length\": \"41\", \n    \"Content-Type\": \"application/json\", \n    \"Host\": \"httpbin.org\", \n    \"User-Agent\": \"python-requests/2.32.5\", \n    \"X-Amzn-Trace-Id\": \"Root=1-69e542cb-29b1081d3ae3106d17014329\"\n  }, \n  \"json\": {\n    \"name\": \"<script>alert('xss')</script>\"\n  }, \n  \"origin\": \"172.182.200.129\", \n  \"url\": \"https://httpbin.org/post\"\n}\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 325.197
+  },
+  {
+    "name": "Positive: GET /status/200",
+    "type": "positive",
+    "url": "https://httpbin.org/status/200",
+    "method": "GET",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 200,
+    "response_body": "",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": true,
+      "response_time_ok": true,
+      "has_response_content": false,
+      "no_error_in_response": true
+    },
+    "response_time": 435.459
+  }
+]

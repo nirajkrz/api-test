@@ -1,0 +1,176 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>API Test Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1 { color: #333; }
+                .summary { margin-bottom: 20px; }
+                .summary p { margin: 5px 0; }
+                .passed { color: green; }
+                .failed { color: red; }
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .details { display: none; margin-top: 10px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ddd; }
+                .toggle-details { cursor: pointer; color: blue; text-decoration: underline; }
+            </style>
+            <script>
+                function toggleDetails(id) {
+                    var details = document.getElementById(id);
+                    if (details.style.display === "none") {
+                        details.style.display = "block";
+                    } else {
+                        details.style.display = "none";
+                    }
+                }
+            </script>
+        </head>
+        <body>
+            <h1>API Test Report</h1>
+            <div class="summary">
+                <p>Total Tests: 5</p>
+                <p class="passed">Passed: 0</p>
+                <p class="failed">Failed: 5</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Case</th>
+                        <th>Type</th>
+                        <th>Contract Type</th>
+                        <th>Method</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Response Time</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                    <tr>
+                        <td>Smart Contract: Call name function</td>
+                        <td>positive</td>
+                        <td>smart_contract</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/name</td>
+                        <td class="failed">Failed</td>
+                        <td>310.66ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-0')">View Details</span>
+                            <div id="details-0" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Smart Contract: Call symbol function</td>
+                        <td>positive</td>
+                        <td>smart_contract</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/symbol</td>
+                        <td class="failed">Failed</td>
+                        <td>343.61ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-1')">View Details</span>
+                            <div id="details-1" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Smart Contract: Call totalSupply function</td>
+                        <td>positive</td>
+                        <td>smart_contract</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/totalSupply</td>
+                        <td class="failed">Failed</td>
+                        <td>257.04ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-2')">View Details</span>
+                            <div id="details-2" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Smart Contract: Call balanceOf function</td>
+                        <td>positive</td>
+                        <td>smart_contract</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/balanceOf</td>
+                        <td class="failed">Failed</td>
+                        <td>258.74ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-3')">View Details</span>
+                            <div id="details-3" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Smart Contract: Call transfer function</td>
+                        <td>positive</td>
+                        <td>smart_contract</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/transfer</td>
+                        <td class="failed">Failed</td>
+                        <td>248.83ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-4')">View Details</span>
+                            <div id="details-4" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                </tbody>
+            </table>
+        </body>
+        </html>
+        

@@ -8,15 +8,16 @@ from gherkin_generator import GherkinGenerator
 
 def main():
     parser = argparse.ArgumentParser(description="No-code API Testing Tool")
-    parser.add_argument("--spec", required=True, help="Path to Swagger/OpenAPI specification (JSON/YAML)")
+    parser.add_argument("--contract", required=True, help="Path to contract/specification file (OpenAPI/Swagger, ABI, GraphQL, etc.)")
     parser.add_argument("--metadata", help="Path to metadata/configuration file (YAML)")
     parser.add_argument("--base-url", required=True, help="Base URL of the API")
     parser.add_argument("--output-dir", default="output", help="Directory to save test results and Gherkin files")
+    parser.add_argument("--contract-type", help="Type of contract (openapi, abi, graphql, postman, auto)")
     args = parser.parse_args()
 
     # 1. Parse Input
-    print(f"Parsing specification: {args.spec}")
-    input_parser = InputParser(args.spec, args.metadata)
+    print(f"Parsing contract: {args.contract}")
+    input_parser = InputParser(args.contract, args.metadata, args.contract_type)
     endpoints = input_parser.get_endpoints()
     schemas = input_parser.get_schemas()
 

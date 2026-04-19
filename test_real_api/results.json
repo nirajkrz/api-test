@@ -2,42 +2,56 @@
   {
     "name": "Positive: GET /users",
     "type": "positive",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
-      "limit": 44,
-      "offset": 67
+      "limit": 59,
+      "offset": 37
     },
     "request_body": {},
     "expected_status": 200,
     "actual_status": 404,
     "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
     "passed": false,
-    "contract_type": "rest_api"
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 261.925
   },
   {
     "name": "Negative: Invalid data type for parameter 'limit' in GET /users",
     "type": "negative",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
       "limit": "not-an-integer",
-      "offset": 96
+      "offset": 55
     },
     "request_body": {},
     "expected_status": 400,
     "actual_status": 404,
     "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
     "passed": false,
-    "contract_type": "rest_api"
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 236.006
   },
   {
     "name": "Negative: Invalid data type for parameter 'offset' in GET /users",
     "type": "negative",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
-      "limit": 25,
+      "limit": 62,
       "offset": "not-an-integer"
     },
     "request_body": {},
@@ -45,31 +59,45 @@
     "actual_status": 404,
     "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
     "passed": false,
-    "contract_type": "rest_api"
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 282.10699999999997
   },
   {
     "name": "Edge: Null value for optional parameter 'limit' in GET /users",
     "type": "edge",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
       "limit": null,
-      "offset": 99
+      "offset": 54
     },
     "request_body": {},
     "expected_status": 200,
     "actual_status": 404,
     "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
     "passed": false,
-    "contract_type": "rest_api"
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 288.798
   },
   {
     "name": "Edge: Null value for optional parameter 'offset' in GET /users",
     "type": "edge",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "GET",
     "parameters": {
-      "limit": 83,
+      "limit": 98,
       "offset": null
     },
     "request_body": {},
@@ -77,44 +105,87 @@
     "actual_status": 404,
     "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
     "passed": false,
-    "contract_type": "rest_api"
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 292.69800000000004
   },
   {
     "name": "Positive: POST /users",
     "type": "positive",
-    "url": "http://httpbin.org/users",
+    "url": "https://httpbin.org/users",
     "method": "POST",
     "parameters": {},
     "request_body": {
-      "name": "BggRWowpSK",
-      "email": "wwexKkXPGP",
-      "age": 58
+      "name": "TGcv5w0gD9UahTnide7",
+      "email": "5yYquTX5p",
+      "age": 390
     },
     "expected_status": 200,
     "actual_status": 404,
     "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
     "passed": false,
-    "contract_type": "rest_api"
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 289.725
+  },
+  {
+    "name": "Security: XSS in request body - POST /users",
+    "type": "security",
+    "url": "https://httpbin.org/users",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {
+      "name": "<script>alert('xss')</script>"
+    },
+    "expected_status": 400,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 295.75600000000003
   },
   {
     "name": "Positive: GET /users/{id}",
     "type": "positive",
-    "url": "http://httpbin.org/users/{id}",
+    "url": "https://httpbin.org/users/{id}",
     "method": "GET",
     "parameters": {
-      "id": "ZlbIDtgKAL"
+      "id": "kIbGWtMabn"
     },
     "request_body": {},
     "expected_status": 200,
     "actual_status": 404,
     "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
     "passed": false,
-    "contract_type": "rest_api"
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 238.18200000000002
   },
   {
     "name": "Negative: Missing required parameter 'id' in GET /users/{id}",
     "type": "negative",
-    "url": "http://httpbin.org/users/{id}",
+    "url": "https://httpbin.org/users/{id}",
     "method": "GET",
     "parameters": {},
     "request_body": {},
@@ -122,12 +193,19 @@
     "actual_status": 404,
     "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
     "passed": false,
-    "contract_type": "rest_api"
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 265.67
   },
   {
     "name": "Negative: Invalid data type for parameter 'id' in GET /users/{id}",
     "type": "negative",
-    "url": "http://httpbin.org/users/{id}",
+    "url": "https://httpbin.org/users/{id}",
     "method": "GET",
     "parameters": {
       "id": 123
@@ -137,6 +215,13 @@
     "actual_status": 404,
     "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
     "passed": false,
-    "contract_type": "rest_api"
+    "contract_type": "rest_api",
+    "assertions": {
+      "status_code_200": false,
+      "response_time_ok": true,
+      "has_response_content": true,
+      "no_error_in_response": true
+    },
+    "response_time": 273.42
   }
 ]

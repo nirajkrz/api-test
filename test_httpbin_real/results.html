@@ -1,0 +1,392 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>API Test Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1 { color: #333; }
+                .summary { margin-bottom: 20px; }
+                .summary p { margin: 5px 0; }
+                .passed { color: green; }
+                .failed { color: red; }
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .details { display: none; margin-top: 10px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ddd; }
+                .toggle-details { cursor: pointer; color: blue; text-decoration: underline; }
+            </style>
+            <script>
+                function toggleDetails(id) {
+                    var details = document.getElementById(id);
+                    if (details.style.display === "none") {
+                        details.style.display = "block";
+                    } else {
+                        details.style.display = "none";
+                    }
+                }
+            </script>
+        </head>
+        <body>
+            <h1>API Test Report</h1>
+            <div class="summary">
+                <p>Total Tests: 9</p>
+                <p class="passed">Passed: 4</p>
+                <p class="failed">Failed: 5</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Case</th>
+                        <th>Type</th>
+                        <th>Contract Type</th>
+                        <th>Method</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Response Time</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                    <tr>
+                        <td>Positive: GET /get</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/get</td>
+                        <td class="passed">Passed</td>
+                        <td>465.29ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-0')">View Details</span>
+                            <div id="details-0" class="details">
+                                <p><strong>Parameters:</strong> {
+  "param1": "fKPBLhcPPH",
+  "param2": 21
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {
+    "param1": "fKPBLhcPPH", 
+    "param2": "21"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "2", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e542c9-0f6696cd18d941946f6abfcb"
+  }, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/get?param1=fKPBLhcPPH&param2=21"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'param1' in GET /get</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/get</td>
+                        <td class="failed">Failed</td>
+                        <td>236.47ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-1')">View Details</span>
+                            <div id="details-1" class="details">
+                                <p><strong>Parameters:</strong> {
+  "param1": 123,
+  "param2": 3
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {
+    "param1": "123", 
+    "param2": "3"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "2", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e542c9-6c0d4c0211733e1d1d8864f5"
+  }, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/get?param1=123&param2=3"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'param2' in GET /get</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/get</td>
+                        <td class="failed">Failed</td>
+                        <td>375.41ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-2')">View Details</span>
+                            <div id="details-2" class="details">
+                                <p><strong>Parameters:</strong> {
+  "param1": "WTKmRZSsRa",
+  "param2": "not-an-integer"
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {
+    "param1": "WTKmRZSsRa", 
+    "param2": "not-an-integer"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "2", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e542c9-52b485e650ee4aab0f10126e"
+  }, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/get?param1=WTKmRZSsRa&param2=not-an-integer"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Edge: Null value for optional parameter 'param1' in GET /get</td>
+                        <td>edge</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/get</td>
+                        <td class="passed">Passed</td>
+                        <td>241.54ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-3')">View Details</span>
+                            <div id="details-3" class="details">
+                                <p><strong>Parameters:</strong> {
+  "param1": null,
+  "param2": 19
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {
+    "param2": "19"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "2", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e542ca-2826deef605658910f2be1c6"
+  }, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/get?param2=19"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Edge: Null value for optional parameter 'param2' in GET /get</td>
+                        <td>edge</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/get</td>
+                        <td class="passed">Passed</td>
+                        <td>273.66ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-4')">View Details</span>
+                            <div id="details-4" class="details">
+                                <p><strong>Parameters:</strong> {
+  "param1": "XhzFiklkiy",
+  "param2": null
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {
+    "param1": "XhzFiklkiy"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "2", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e542ca-664016723d457d320d49cd3b"
+  }, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/get?param1=XhzFiklkiy"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Security: SQL Injection in param1 - GET /get</td>
+                        <td>security</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/get</td>
+                        <td class="failed">Failed</td>
+                        <td>422.17ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-5')">View Details</span>
+                            <div id="details-5" class="details">
+                                <p><strong>Parameters:</strong> {
+  "param1": "'; DROP TABLE users; --"
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {
+    "param1": "'; DROP TABLE users; --"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "2", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e542ca-465e83b07e27fb0b6a9ae793"
+  }, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/get?param1='%3B+DROP+TABLE+users%3B+--"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: POST /post</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/post</td>
+                        <td class="passed">Passed</td>
+                        <td>317.07ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-6')">View Details</span>
+                            <div id="details-6" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {}, 
+  "data": "{}", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "2", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e542cb-526a2026219ae72b20cdf29b"
+  }, 
+  "json": {}, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/post"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Security: XSS in request body - POST /post</td>
+                        <td>security</td>
+                        <td>rest_api</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/post</td>
+                        <td class="failed">Failed</td>
+                        <td>325.20ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-7')">View Details</span>
+                            <div id="details-7" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {
+  "name": "<script>alert('xss')</script>"
+}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre>{
+  "args": {}, 
+  "data": "{\"name\": \"<script>alert('xss')</script>\"}", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Content-Length": "41", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.32.5", 
+    "X-Amzn-Trace-Id": "Root=1-69e542cb-29b1081d3ae3106d17014329"
+  }, 
+  "json": {
+    "name": "<script>alert('xss')</script>"
+  }, 
+  "origin": "172.182.200.129", 
+  "url": "https://httpbin.org/post"
+}
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: GET /status/200</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/status/200</td>
+                        <td class="failed">Failed</td>
+                        <td>435.46ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-8')">View Details</span>
+                            <div id="details-8" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 200</p>
+                                <p><strong>Response Body:</strong> <pre></pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                </tbody>
+            </table>
+        </body>
+        </html>
+        

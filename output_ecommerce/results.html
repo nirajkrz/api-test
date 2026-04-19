@@ -1,0 +1,671 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>API Test Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1 { color: #333; }
+                .summary { margin-bottom: 20px; }
+                .summary p { margin: 5px 0; }
+                .passed { color: green; }
+                .failed { color: red; }
+                table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                th { background-color: #f2f2f2; }
+                .details { display: none; margin-top: 10px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ddd; }
+                .toggle-details { cursor: pointer; color: blue; text-decoration: underline; }
+            </style>
+            <script>
+                function toggleDetails(id) {
+                    var details = document.getElementById(id);
+                    if (details.style.display === "none") {
+                        details.style.display = "block";
+                    } else {
+                        details.style.display = "none";
+                    }
+                }
+            </script>
+        </head>
+        <body>
+            <h1>API Test Report</h1>
+            <div class="summary">
+                <p>Total Tests: 22</p>
+                <p class="passed">Passed: 0</p>
+                <p class="failed">Failed: 22</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Case</th>
+                        <th>Type</th>
+                        <th>Contract Type</th>
+                        <th>Method</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+                    <tr>
+                        <td>Positive: GET /products</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-0')">View Details</span>
+                            <div id="details-0" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": "hgKgyAXYJf",
+  "price_min": 45.95581556315406,
+  "price_max": 93.3674349723499,
+  "in_stock": false,
+  "limit": 28
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'category' in GET /products</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-1')">View Details</span>
+                            <div id="details-1" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": 123,
+  "price_min": 69.98458036888871,
+  "price_max": 29.945180202921577,
+  "in_stock": true,
+  "limit": 77
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'price_min' in GET /products</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-2')">View Details</span>
+                            <div id="details-2" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": "TGbQpdyPbA",
+  "price_min": "not-a-number",
+  "price_max": 49.22062997997775,
+  "in_stock": true,
+  "limit": 14
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'price_max' in GET /products</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-3')">View Details</span>
+                            <div id="details-3" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": "drBSswclGq",
+  "price_min": 34.51049734730018,
+  "price_max": "not-a-number",
+  "in_stock": true,
+  "limit": 57
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'in_stock' in GET /products</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-4')">View Details</span>
+                            <div id="details-4" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": "AZPEsGnxwN",
+  "price_min": 82.69386749504731,
+  "price_max": 59.94428347534992,
+  "in_stock": "not-a-boolean",
+  "limit": 49
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'limit' in GET /products</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-5')">View Details</span>
+                            <div id="details-5" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": "lSsigOGJNt",
+  "price_min": 32.2168425562914,
+  "price_max": 69.9704998086465,
+  "in_stock": false,
+  "limit": "not-an-integer"
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Edge: Null value for optional parameter 'category' in GET /products</td>
+                        <td>edge</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-6')">View Details</span>
+                            <div id="details-6" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": null,
+  "price_min": 60.95287384235837,
+  "price_max": 56.20691309336153,
+  "in_stock": true,
+  "limit": 69
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Edge: Null value for optional parameter 'price_min' in GET /products</td>
+                        <td>edge</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-7')">View Details</span>
+                            <div id="details-7" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": "dqvXDZVyFR",
+  "price_min": null,
+  "price_max": 49.19959087314685,
+  "in_stock": false,
+  "limit": 99
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Edge: Null value for optional parameter 'price_max' in GET /products</td>
+                        <td>edge</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-8')">View Details</span>
+                            <div id="details-8" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": "qXcpWtdqtk",
+  "price_min": 9.834673533392525,
+  "price_max": null,
+  "in_stock": true,
+  "limit": 86
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Edge: Null value for optional parameter 'in_stock' in GET /products</td>
+                        <td>edge</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-9')">View Details</span>
+                            <div id="details-9" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": "yDEJAEksbt",
+  "price_min": 84.64912357290648,
+  "price_max": 14.407596074140946,
+  "in_stock": null,
+  "limit": 3
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Edge: Null value for optional parameter 'limit' in GET /products</td>
+                        <td>edge</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-10')">View Details</span>
+                            <div id="details-10" class="details">
+                                <p><strong>Parameters:</strong> {
+  "category": "OklcerIhoa",
+  "price_min": 6.670701225879275,
+  "price_max": 40.41186916516473,
+  "in_stock": false,
+  "limit": null
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: POST /products</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/products</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-11')">View Details</span>
+                            <div id="details-11" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {
+  "name": "IZbtJiPWjc",
+  "description": "DizgiawpPQ",
+  "price": 84.91347260624904,
+  "category": "HCkkHTWSbm",
+  "in_stock": false,
+  "tags": null
+}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: GET /products/{id}</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-12')">View Details</span>
+                            <div id="details-12" class="details">
+                                <p><strong>Parameters:</strong> {
+  "id": "tMQMtOzUFz"
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Missing required parameter 'id' in GET /products/{id}</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-13')">View Details</span>
+                            <div id="details-13" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'id' in GET /products/{id}</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>GET</td>
+                        <td>https://httpbin.org/products/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-14')">View Details</span>
+                            <div id="details-14" class="details">
+                                <p><strong>Parameters:</strong> {
+  "id": 123
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: PUT /products/{id}</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>PUT</td>
+                        <td>https://httpbin.org/products/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-15')">View Details</span>
+                            <div id="details-15" class="details">
+                                <p><strong>Parameters:</strong> {
+  "id": "YMVsobHIXi"
+}</p>
+                                <p><strong>Request Body:</strong> {
+  "name": "elETTwIlzQ",
+  "description": "yyGlzZOWMc",
+  "price": 37.77756056495784,
+  "category": "YCMsiGMBtO",
+  "in_stock": true,
+  "tags": null
+}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Missing required parameter 'id' in PUT /products/{id}</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>PUT</td>
+                        <td>https://httpbin.org/products/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-16')">View Details</span>
+                            <div id="details-16" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {
+  "name": "TaUapWtFiw",
+  "description": "yYVffesdQX",
+  "price": 61.29718947170578,
+  "category": "AMnvYEeFUh",
+  "in_stock": true,
+  "tags": null
+}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'id' in PUT /products/{id}</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>PUT</td>
+                        <td>https://httpbin.org/products/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-17')">View Details</span>
+                            <div id="details-17" class="details">
+                                <p><strong>Parameters:</strong> {
+  "id": 123
+}</p>
+                                <p><strong>Request Body:</strong> {
+  "name": "LVothVCSfO",
+  "description": "UgGxhIqVhV",
+  "price": 95.5392628785824,
+  "category": "EGfGiPiqTI",
+  "in_stock": true,
+  "tags": null
+}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: DELETE /products/{id}</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>DELETE</td>
+                        <td>https://httpbin.org/products/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-18')">View Details</span>
+                            <div id="details-18" class="details">
+                                <p><strong>Parameters:</strong> {
+  "id": "jYPJtlADHG"
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Missing required parameter 'id' in DELETE /products/{id}</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>DELETE</td>
+                        <td>https://httpbin.org/products/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-19')">View Details</span>
+                            <div id="details-19" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Negative: Invalid data type for parameter 'id' in DELETE /products/{id}</td>
+                        <td>negative</td>
+                        <td>rest_api</td>
+                        <td>DELETE</td>
+                        <td>https://httpbin.org/products/{id}</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-20')">View Details</span>
+                            <div id="details-20" class="details">
+                                <p><strong>Parameters:</strong> {
+  "id": 123
+}</p>
+                                <p><strong>Request Body:</strong> {}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Positive: POST /orders</td>
+                        <td>positive</td>
+                        <td>rest_api</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/orders</td>
+                        <td class="failed">Failed</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-21')">View Details</span>
+                            <div id="details-21" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {
+  "customer_id": "UmGQBsozBn",
+  "items": null,
+  "shipping_address": null
+}</p>
+                                <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                </tbody>
+            </table>
+        </body>
+        </html>
+        

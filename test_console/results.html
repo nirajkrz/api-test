@@ -30,9 +30,9 @@
         <body>
             <h1>API Test Report</h1>
             <div class="summary">
-                <p>Total Tests: 9</p>
+                <p>Total Tests: 10</p>
                 <p class="passed">Passed: 0</p>
-                <p class="failed">Failed: 9</p>
+                <p class="failed">Failed: 10</p>
             </div>
             <table>
                 <thead>
@@ -43,6 +43,7 @@
                         <th>Method</th>
                         <th>URL</th>
                         <th>Status</th>
+                        <th>Response Time</th>
                         <th>Details</th>
                     </tr>
                 </thead>
@@ -53,14 +54,15 @@
                         <td>positive</td>
                         <td>rest_api</td>
                         <td>GET</td>
-                        <td>http://httpbin.org/users</td>
+                        <td>https://httpbin.org/users</td>
                         <td class="failed">Failed</td>
+                        <td>278.11ms</td>
                         <td>
                             <span class="toggle-details" onclick="toggleDetails('details-0')">View Details</span>
                             <div id="details-0" class="details">
                                 <p><strong>Parameters:</strong> {
-  "limit": 44,
-  "offset": 67
+  "limit": 18,
+  "offset": 30
 }</p>
                                 <p><strong>Request Body:</strong> {}</p>
                                 <p><strong>Expected Status:</strong> 200</p>
@@ -79,14 +81,15 @@
                         <td>negative</td>
                         <td>rest_api</td>
                         <td>GET</td>
-                        <td>http://httpbin.org/users</td>
+                        <td>https://httpbin.org/users</td>
                         <td class="failed">Failed</td>
+                        <td>235.23ms</td>
                         <td>
                             <span class="toggle-details" onclick="toggleDetails('details-1')">View Details</span>
                             <div id="details-1" class="details">
                                 <p><strong>Parameters:</strong> {
   "limit": "not-an-integer",
-  "offset": 96
+  "offset": 2
 }</p>
                                 <p><strong>Request Body:</strong> {}</p>
                                 <p><strong>Expected Status:</strong> 400</p>
@@ -105,13 +108,14 @@
                         <td>negative</td>
                         <td>rest_api</td>
                         <td>GET</td>
-                        <td>http://httpbin.org/users</td>
+                        <td>https://httpbin.org/users</td>
                         <td class="failed">Failed</td>
+                        <td>314.03ms</td>
                         <td>
                             <span class="toggle-details" onclick="toggleDetails('details-2')">View Details</span>
                             <div id="details-2" class="details">
                                 <p><strong>Parameters:</strong> {
-  "limit": 25,
+  "limit": 28,
   "offset": "not-an-integer"
 }</p>
                                 <p><strong>Request Body:</strong> {}</p>
@@ -131,14 +135,15 @@
                         <td>edge</td>
                         <td>rest_api</td>
                         <td>GET</td>
-                        <td>http://httpbin.org/users</td>
+                        <td>https://httpbin.org/users</td>
                         <td class="failed">Failed</td>
+                        <td>241.50ms</td>
                         <td>
                             <span class="toggle-details" onclick="toggleDetails('details-3')">View Details</span>
                             <div id="details-3" class="details">
                                 <p><strong>Parameters:</strong> {
   "limit": null,
-  "offset": 99
+  "offset": 63
 }</p>
                                 <p><strong>Request Body:</strong> {}</p>
                                 <p><strong>Expected Status:</strong> 200</p>
@@ -157,13 +162,14 @@
                         <td>edge</td>
                         <td>rest_api</td>
                         <td>GET</td>
-                        <td>http://httpbin.org/users</td>
+                        <td>https://httpbin.org/users</td>
                         <td class="failed">Failed</td>
+                        <td>544.24ms</td>
                         <td>
                             <span class="toggle-details" onclick="toggleDetails('details-4')">View Details</span>
                             <div id="details-4" class="details">
                                 <p><strong>Parameters:</strong> {
-  "limit": 83,
+  "limit": 87,
   "offset": null
 }</p>
                                 <p><strong>Request Body:</strong> {}</p>
@@ -183,18 +189,45 @@
                         <td>positive</td>
                         <td>rest_api</td>
                         <td>POST</td>
-                        <td>http://httpbin.org/users</td>
+                        <td>https://httpbin.org/users</td>
                         <td class="failed">Failed</td>
+                        <td>262.98ms</td>
                         <td>
                             <span class="toggle-details" onclick="toggleDetails('details-5')">View Details</span>
                             <div id="details-5" class="details">
                                 <p><strong>Parameters:</strong> {}</p>
                                 <p><strong>Request Body:</strong> {
-  "name": "BggRWowpSK",
-  "email": "wwexKkXPGP",
-  "age": 58
+  "name": "C5N",
+  "email": "eaeMnc11tLm",
+  "age": 121
 }</p>
                                 <p><strong>Expected Status:</strong> 200</p>
+                                <p><strong>Actual Status:</strong> 404</p>
+                                <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>
+</pre></p>
+                            </div>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Security: XSS in request body - POST /users</td>
+                        <td>security</td>
+                        <td>rest_api</td>
+                        <td>POST</td>
+                        <td>https://httpbin.org/users</td>
+                        <td class="failed">Failed</td>
+                        <td>257.82ms</td>
+                        <td>
+                            <span class="toggle-details" onclick="toggleDetails('details-6')">View Details</span>
+                            <div id="details-6" class="details">
+                                <p><strong>Parameters:</strong> {}</p>
+                                <p><strong>Request Body:</strong> {
+  "name": "<script>alert('xss')</script>"
+}</p>
+                                <p><strong>Expected Status:</strong> 400</p>
                                 <p><strong>Actual Status:</strong> 404</p>
                                 <p><strong>Response Body:</strong> <pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <title>404 Not Found</title>
@@ -210,13 +243,14 @@
                         <td>positive</td>
                         <td>rest_api</td>
                         <td>GET</td>
-                        <td>http://httpbin.org/users/{id}</td>
+                        <td>https://httpbin.org/users/{id}</td>
                         <td class="failed">Failed</td>
+                        <td>237.44ms</td>
                         <td>
-                            <span class="toggle-details" onclick="toggleDetails('details-6')">View Details</span>
-                            <div id="details-6" class="details">
+                            <span class="toggle-details" onclick="toggleDetails('details-7')">View Details</span>
+                            <div id="details-7" class="details">
                                 <p><strong>Parameters:</strong> {
-  "id": "ZlbIDtgKAL"
+  "id": "TrswrVsoaP"
 }</p>
                                 <p><strong>Request Body:</strong> {}</p>
                                 <p><strong>Expected Status:</strong> 200</p>
@@ -235,11 +269,12 @@
                         <td>negative</td>
                         <td>rest_api</td>
                         <td>GET</td>
-                        <td>http://httpbin.org/users/{id}</td>
+                        <td>https://httpbin.org/users/{id}</td>
                         <td class="failed">Failed</td>
+                        <td>236.99ms</td>
                         <td>
-                            <span class="toggle-details" onclick="toggleDetails('details-7')">View Details</span>
-                            <div id="details-7" class="details">
+                            <span class="toggle-details" onclick="toggleDetails('details-8')">View Details</span>
+                            <div id="details-8" class="details">
                                 <p><strong>Parameters:</strong> {}</p>
                                 <p><strong>Request Body:</strong> {}</p>
                                 <p><strong>Expected Status:</strong> 400</p>
@@ -258,11 +293,12 @@
                         <td>negative</td>
                         <td>rest_api</td>
                         <td>GET</td>
-                        <td>http://httpbin.org/users/{id}</td>
+                        <td>https://httpbin.org/users/{id}</td>
                         <td class="failed">Failed</td>
+                        <td>262.23ms</td>
                         <td>
-                            <span class="toggle-details" onclick="toggleDetails('details-8')">View Details</span>
-                            <div id="details-8" class="details">
+                            <span class="toggle-details" onclick="toggleDetails('details-9')">View Details</span>
+                            <div id="details-9" class="details">
                                 <p><strong>Parameters:</strong> {
   "id": 123
 }</p>

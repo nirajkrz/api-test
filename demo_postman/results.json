@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Positive: GET /users",
+    "type": "positive",
+    "url": "https://httpbin.org/users",
+    "method": "GET",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 264.71299999999997
+  },
+  {
+    "name": "Positive: POST /users",
+    "type": "positive",
+    "url": "https://httpbin.org/users",
+    "method": "POST",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 232.37099999999998
+  },
+  {
+    "name": "Positive: GET /users/123",
+    "type": "positive",
+    "url": "https://httpbin.org/users/123",
+    "method": "GET",
+    "parameters": {},
+    "request_body": {},
+    "expected_status": 200,
+    "actual_status": 404,
+    "response_body": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.</p>\n",
+    "passed": false,
+    "contract_type": "rest_api",
+    "assertions": {},
+    "response_time": 259.0
+  }
+]

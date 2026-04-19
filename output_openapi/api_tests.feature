@@ -4,7 +4,7 @@ Feature: API Testing Scenarios
     Given the API endpoint '/users' is available
     And the following query parameters are provided:
       | Parameter | Value |
-      | limit | 44 |
+      | limit | 69 |
       | offset | 67 |
     When a GET request is sent to the endpoint
     Then the response status code should be 200
@@ -14,7 +14,7 @@ Feature: API Testing Scenarios
     And the following query parameters are provided:
       | Parameter | Value |
       | limit | not-an-integer |
-      | offset | 96 |
+      | offset | 20 |
     When a GET request is sent to the endpoint
     Then the response status code should be 400
 
@@ -22,7 +22,7 @@ Feature: API Testing Scenarios
     Given the API endpoint '/users' is available
     And the following query parameters are provided:
       | Parameter | Value |
-      | limit | 25 |
+      | limit | 53 |
       | offset | not-an-integer |
     When a GET request is sent to the endpoint
     Then the response status code should be 400
@@ -32,7 +32,7 @@ Feature: API Testing Scenarios
     And the following query parameters are provided:
       | Parameter | Value |
       | limit | None |
-      | offset | 99 |
+      | offset | 90 |
     When a GET request is sent to the endpoint
     Then the response status code should be 200
 
@@ -40,7 +40,7 @@ Feature: API Testing Scenarios
     Given the API endpoint '/users' is available
     And the following query parameters are provided:
       | Parameter | Value |
-      | limit | 83 |
+      | limit | 33 |
       | offset | None |
     When a GET request is sent to the endpoint
     Then the response status code should be 200
@@ -50,9 +50,9 @@ Feature: API Testing Scenarios
     And the following request body is provided:
       """
       {
-  "name": "BggRWowpSK",
-  "email": "wwexKkXPGP",
-  "age": 58
+  "name": "kPxuvXUiBU",
+  "email": "QyOEvdwqgV",
+  "age": 84
 }
       """
     When a POST request is sent to the endpoint
@@ -62,7 +62,7 @@ Feature: API Testing Scenarios
     Given the API endpoint '/users/{id}' is available
     And the following query parameters are provided:
       | Parameter | Value |
-      | id | ZlbIDtgKAL |
+      | id | CCrnXHtAFG |
     When a GET request is sent to the endpoint
     Then the response status code should be 200
 

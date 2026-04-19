@@ -1,0 +1,103 @@
+# E-commerce API Testing Configuration
+environment:
+  base_url: "https://httpbin.org"
+  auth_token: "your-auth-token"
+  timeout: 30
+
+test_data:
+  products:
+    - name: "iPhone 15"
+      description: "Latest smartphone"
+      price: 999.99
+      category: "electronics"
+      in_stock: true
+      tags: ["smartphone", "apple", "ios"]
+    - name: "MacBook Pro"
+      description: "Professional laptop"
+      price: 2499.99
+      category: "electronics"
+      in_stock: true
+      tags: ["laptop", "apple", "macos"]
+    - name: "T-shirt"
+      description: "Cotton t-shirt"
+      price: 19.99
+      category: "clothing"
+      in_stock: false
+      tags: ["casual", "cotton"]
+  orders:
+    - customer_id: "cust_123"
+      items:
+        - product_id: "prod_1"
+          quantity: 2
+        - product_id: "prod_2"
+          quantity: 1
+      shipping_address:
+        street: "123 Main St"
+        city: "New York"
+        zip_code: "10001"
+    - customer_id: "cust_456"
+      items:
+        - product_id: "prod_3"
+          quantity: 5
+      shipping_address:
+        street: "456 Oak Ave"
+        city: "Los Angeles"
+        zip_code: "90210"
+
+custom_assertions:
+  - endpoint: "/products"
+    method: "GET"
+    assertions:
+      - type: "status_code"
+        expected: 200
+      - type: "response_time"
+        max_ms: 1000
+      - type: "response_body_contains"
+        field: "price"
+        condition: "greater_than"
+        value: 0
+  - endpoint: "/products"
+    method: "POST"
+    assertions:
+      - type: "status_code"
+        expected: 201
+      - type: "response_body_contains"
+        field: "id"
+
+data_driven_scenarios:
+  - name: "Product search by category"
+    endpoint: "/products"
+    method: "GET"
+    test_cases:
+      - params: { "category": "electronics" }
+        expected_status: 200
+      - params: { "category": "clothing" }
+        expected_status: 200
+      - params: { "category": "books" }
+        expected_status: 200
+      - params: { "category": "invalid" }
+        expected_status: 400
+
+performance_tests:
+  - name: "Products list performance"
+    endpoint: "/products"
+    method: "GET"
+    concurrent_users: 10
+    duration_seconds: 30
+    assertions:
+      - type: "response_time_p95"
+        max_ms: 500
+      - type: "error_rate"
+        max_percent: 1
+
+security_tests:
+  - name: "SQL injection attempt"
+    endpoint: "/products"
+    method: "GET"
+    params: { "category": "'; DROP TABLE products; --" }
+    expected_status: 400
+  - name: "XSS attempt"
+    endpoint: "/products"
+    method: "POST"
+    body: { "name": "<script>alert('xss')</script>" }
+    expected_status: 400

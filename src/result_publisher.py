@@ -73,9 +73,11 @@ class ResultPublisher:
                     <tr>
                         <th>Test Case</th>
                         <th>Type</th>
+                        <th>Contract Type</th>
                         <th>Method</th>
                         <th>URL</th>
                         <th>Status</th>
+                        <th>Response Time</th>
                         <th>Details</th>
                     </tr>
                 </thead>
@@ -88,9 +90,11 @@ class ResultPublisher:
                     <tr>
                         <td>{result['name']}</td>
                         <td>{result['type']}</td>
+                        <td>{result.get('contract_type', 'rest_api')}</td>
                         <td>{result['method']}</td>
                         <td>{result['url']}</td>
                         <td class="{status_class}">{status_text}</td>
+                        <td>{f"{result.get('response_time', 0):.2f}ms" if result.get('response_time') else "N/A"}</td>
                         <td>
                             <span class="toggle-details" onclick="toggleDetails('details-{i}')">View Details</span>
                             <div id="details-{i}" class="details">

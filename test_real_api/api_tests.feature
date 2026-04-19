@@ -4,8 +4,8 @@ Feature: API Testing Scenarios
     Given the API endpoint '/users' is available
     And the following query parameters are provided:
       | Parameter | Value |
-      | limit | 44 |
-      | offset | 67 |
+      | limit | 59 |
+      | offset | 37 |
     When a GET request is sent to the endpoint
     Then the response status code should be 200
 
@@ -14,7 +14,7 @@ Feature: API Testing Scenarios
     And the following query parameters are provided:
       | Parameter | Value |
       | limit | not-an-integer |
-      | offset | 96 |
+      | offset | 55 |
     When a GET request is sent to the endpoint
     Then the response status code should be 400
 
@@ -22,7 +22,7 @@ Feature: API Testing Scenarios
     Given the API endpoint '/users' is available
     And the following query parameters are provided:
       | Parameter | Value |
-      | limit | 25 |
+      | limit | 62 |
       | offset | not-an-integer |
     When a GET request is sent to the endpoint
     Then the response status code should be 400
@@ -32,7 +32,7 @@ Feature: API Testing Scenarios
     And the following query parameters are provided:
       | Parameter | Value |
       | limit | None |
-      | offset | 99 |
+      | offset | 54 |
     When a GET request is sent to the endpoint
     Then the response status code should be 200
 
@@ -40,7 +40,7 @@ Feature: API Testing Scenarios
     Given the API endpoint '/users' is available
     And the following query parameters are provided:
       | Parameter | Value |
-      | limit | 83 |
+      | limit | 98 |
       | offset | None |
     When a GET request is sent to the endpoint
     Then the response status code should be 200
@@ -50,19 +50,30 @@ Feature: API Testing Scenarios
     And the following request body is provided:
       """
       {
-  "name": "BggRWowpSK",
-  "email": "wwexKkXPGP",
-  "age": 58
+  "name": "TGcv5w0gD9UahTnide7",
+  "email": "5yYquTX5p",
+  "age": 390
 }
       """
     When a POST request is sent to the endpoint
     Then the response status code should be 200
 
+  Scenario: Security: XSS in request body - POST /users
+    Given the API endpoint '/users' is available
+    And the following request body is provided:
+      """
+      {
+  "name": "<script>alert('xss')</script>"
+}
+      """
+    When a POST request is sent to the endpoint
+    Then the response status code should be 400
+
   Scenario: Positive: GET /users/{id}
     Given the API endpoint '/users/{id}' is available
     And the following query parameters are provided:
       | Parameter | Value |
-      | id | ZlbIDtgKAL |
+      | id | kIbGWtMabn |
     When a GET request is sent to the endpoint
     Then the response status code should be 200
 
