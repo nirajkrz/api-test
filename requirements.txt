@@ -1,6 +1,8 @@
-requests
-PyYAML
-pytest
-jinja2
-jsonschema
-urllib3
+requests>=2.25.0
+PyYAML>=5.4.0
+pytest>=6.0.0
+jinja2>=2.11.0
+jsonschema>=3.2.0
+urllib3>=1.26.0
+prance>=0.22.0
+openapi-spec-validator>=0.5.0
